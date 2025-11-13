@@ -1,0 +1,77 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kind Words That Will Make Your Day</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="sticky-header">
+      <h1 class="title">Kind Words That Will Make Your Day</h1>
+    </header>
+    
+    <main>
+      <div class="container">
+        <button id="encouragementBtn" class="encouragement-button">Felling Down Or Sad? Press Me</button>
+        <div id="paperContainer" class="paper-container"></div>
+      </div>
+    </main>
+
+    <script>
+      document.getElementById('encouragementBtn').addEventListener('click', function() {
+        const messages = [
+          "You are enough just as you are.",
+          "You are stronger than you think.",
+          "You are valued and important.",
+          "You are not alone — people care about you.",
+          "You deserve to feel safe and respected.",
+          "Your voice matters. Speak your truth.",
+          "You are loved more than you realize.",
+          "Kindness is powerful — and you have plenty of it.",
+          "No one can take away your worth.",
+          "You deserve friends who lift you up, not tear you down.",
+          "Your smile can change someone’s day.",
+          "You don’t have to be perfect to be amazing.",
+          "You are brave for being yourself.",
+          "Never be ashamed of your feelings — they matter.",
+          "You are growing, even when you can’t see it.",
+          "You make the world brighter just by being in it.",
+          "You are allowed to walk away from unkind people.",
+          "You are beautiful in your own unique way.",
+          "You have the right to be treated with respect.",
+          "You bring kindness into the world — and that changes everything.",
+          "The mean things others say don’t define you.",
+          "You deserve love, peace, and happiness.",
+          "Be proud of who you are — the world needs you.",
+          "You are never ‘too much’ or ‘not enough’. You are perfectly you.",
+          "Even when others don’t see your light, it still shines."
+        ];
+        
+        const paper = document.createElement('div');
+        paper.className = 'paper';
+        
+        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+        const messageElement = document.createElement('p');
+        messageElement.className = 'paper-message';
+        messageElement.textContent = randomMessage;
+        
+        const closeButton = document.createElement('span');
+        closeButton.className = 'close-btn';
+        closeButton.innerHTML = '&times;';
+        closeButton.onclick = function() {
+          paper.remove();
+        };
+        
+        paper.appendChild(closeButton);
+        paper.appendChild(messageElement);
+        document.getElementById('paperContainer').appendChild(paper);
+        
+        setTimeout(() => {
+          paper.classList.add('show');
+        }, 10);
+      });
+    </script>
+  </body>
+</html>
+
+</html>
