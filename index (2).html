@@ -1,0 +1,189 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kind Words That Will Make Your Day</title>
+
+    <style>
+      /* Overall Page */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #ffd6e0, #ffe9c7, #d8f3ff);
+        background-size: 400% 400%;
+        animation: bgMove 12s ease infinite;
+      }
+
+      /* Header */
+      .sticky-header {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(10px);
+        padding: 15px;
+        text-align: center;
+        border-bottom: 1px solid #ffffff77;
+      }
+
+      .title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #333;
+        margin: 0;
+      }
+
+      /* Container */
+      .container {
+        margin-top: 80px;
+        text-align: center;
+      }
+
+      /* Button */
+      .encouragement-button {
+        background: #ff8fab;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        color: white;
+        border-radius: 12px;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        transition: 0.25s ease;
+      }
+
+      .encouragement-button:hover {
+        transform: scale(1.05);
+        background: #ff6f91;
+      }
+
+      .encouragement-button:active {
+        transform: scale(0.97);
+      }
+
+      /* Papers */
+      .paper-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 25px;
+      }
+
+      .paper {
+        background: #fff;
+        width: 300px;
+        margin: 15px 0;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: 0.35s ease;
+        position: relative;
+      }
+
+      .paper.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .paper-message {
+        font-size: 1rem;
+        color: #444;
+        margin: 0;
+      }
+
+      /* Close Button */
+      .close-btn {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        cursor: pointer;
+        font-size: 20px;
+        color: #888;
+        transition: 0.2s ease;
+      }
+
+      .close-btn:hover {
+        color: #ff4d6d;
+      }
+
+      /* Background Animation */
+      @keyframes bgMove {
+        0% {background-position: 0% 50%;}
+        50% {background-position: 100% 50%;}
+        100% {background-position: 0% 50%;}
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="sticky-header">
+      <h1 class="title">Kind Words That Will Make Your Day</h1>
+    </header>
+    
+    <main>
+      <div class="container">
+        <button id="encouragementBtn" class="encouragement-button">
+          Feeling Down Or Sad? Press Me
+        </button>
+        <div id="paperContainer" class="paper-container"></div>
+      </div>
+    </main>
+
+    <script>
+      document.getElementById('encouragementBtn').addEventListener('click', function() {
+        const messages = [
+          "You are enough just as you are.",
+          "You are stronger than you think.",
+          "You are valued and important.",
+          "You are not alone — people care about you.",
+          "You deserve to feel safe and respected.",
+          "Your voice matters.",
+          "You are loved more than you know.",
+          "Kindness is powerful — and you have plenty of it.",
+          "No one can take away your worth.",
+          "You deserve friends who lift you up.",
+          "Your smile can change someone’s day.",
+          "You don’t have to be perfect to be amazing.",
+          "You are brave for being yourself.",
+          "Your feelings matter.",
+          "You are growing, even when you can’t see it.",
+          "You make the world brighter just by being in it.",
+          "You are allowed to walk away from unkind people.",
+          "You are beautiful in your own unique way.",
+          "You deserve respect.",
+          "Your kindness makes a difference.",
+          "The mean things people say don’t define you.",
+          "You deserve love and happiness.",
+          "Be proud of who you are.",
+          "You are never too much — you are you.",
+          "Your light shines even when others don’t see it."
+        ];
+        
+        const paper = document.createElement('div');
+        paper.className = 'paper';
+        
+        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+        const messageElement = document.createElement('p');
+        messageElement.className = 'paper-message';
+        messageElement.textContent = randomMessage;
+        
+        const closeButton = document.createElement('span');
+        closeButton.className = 'close-btn';
+        closeButton.innerHTML = '&times;';
+        closeButton.onclick = function() {
+          paper.remove();
+        };
+        
+        paper.appendChild(closeButton);
+        paper.appendChild(messageElement);
+        document.getElementById('paperContainer').appendChild(paper);
+        
+        setTimeout(() => {
+          paper.classList.add('show');
+        }, 10);
+      });
+    </script>
+  </body>
+</html>
